@@ -17,6 +17,9 @@ export class User extends Model {
   @Column
   public email!: string;
 
+  @Column
+  public profileUrl!: string;
+
   @CreatedAt
   public createdAt: Date = new Date();
 
