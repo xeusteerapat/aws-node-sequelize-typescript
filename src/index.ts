@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { sequelize } from './config/sequelize';
 import { User } from './models/User';
 import userRoutes from './routes/user';
+import imageRoute from './routes/image';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ dotenv.config();
   app.use(express.json());
 
   app.use('/api', userRoutes);
+  app.use('/api', imageRoute);
 
   const { PORT } = process.env;
 

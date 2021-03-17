@@ -1,8 +1,17 @@
 import { Request, Response } from 'express';
+import { getGetSignedUrl } from '../config/aws';
 import { User } from '../models/User';
 
 export const addUser = async (req: Request, res: Response) => {
-  const user = new User(req.body);
+  const { firstname, lastname, email, profileUrl } = req.body;
+
+  const user = new User({
+    firstname,
+    lastname,
+    email,
+    profileUrl,
+  });
+
   await user.save();
 
   res.status(201).send(user);
@@ -10,6 +19,7 @@ export const addUser = async (req: Request, res: Response) => {
 
 export const getUsers = async (req: Request, res: Response) => {
   const users = await User.findAll();
+  users.map(user => (user.profileUrl = getGetSignedUrl(user.profileUrl)));
 
   res.status(200).send(users);
 };
