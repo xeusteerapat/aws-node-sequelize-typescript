@@ -19,7 +19,6 @@ export const addUser = async (req: Request, res: Response) => {
 
 export const getUsers = async (req: Request, res: Response) => {
   const users = await User.findAll();
-  users.map(user => (user.profileUrl = getGetSignedUrl(user.profileUrl)));
 
   res.status(200).send(users);
 };
