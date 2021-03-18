@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon",
-    "tsc": "tsc",
+    "tsc": "tsc --build tsconfig.json",
     "dev": "ts-node-dev ./src/index.ts",
     "prod": "tsc && node ./www/index.js",
     "clean": "rimraf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node ./www/index.js"
   },
   "keywords": [],
   "author": "",

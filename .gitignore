@@ -122,3 +122,4 @@ build
 !.elasticbeanstalk/*.global.yml
 
 www
+.DS_Store
