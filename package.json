@@ -10,7 +10,7 @@
     "prod": "tsc && node ./www/index.js",
     "clean": "rimraf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
-    "start": "npm run build && node ./www/index.js"
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
