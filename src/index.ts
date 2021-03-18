@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { sequelize } from './config/sequelize';
 import { User } from './models/User';
@@ -14,6 +14,12 @@ dotenv.config();
   const app = express();
 
   app.use(express.json());
+
+  app.get('/', (req: Request, res: Response) => {
+    res.send({
+      success: true,
+    });
+  });
 
   app.use('/api', userRoutes);
   app.use('/api', imageRoute);
